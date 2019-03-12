@@ -1,0 +1,81 @@
+ /*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//package lcstry;
+
+/**
+ *
+ * @author Ashraful
+ */
+import java.util.*;
+public class LCStry {
+
+    /**
+     * @param args the command line arguments
+     */
+  public static void main(String[] args) 
+  {
+    // TODO code application logic here
+    Scanner take = new Scanner(System.in);
+    String s1 = "AACCACCA";//take.next();
+    String s2 = "ATCGAGCT";//take.next();
+    int [][]a = new int[s1.length()+1][s2.length()+1];
+    String [][]s = new String[s1.length()+1][s2.length()+1];
+    for(int i = 1;i<=s1.length();i++)
+    {
+      for(int j = 1;j<=s2.length();j++)
+      {
+        if(s1.charAt(i-1)==s2.charAt(j-1))
+        {
+          a[i][j] = a[i-1][j-1]+1;
+          s[i][j] = "d";
+        }
+        else
+        {
+          if(a[i-1][j]>=a[i][j-1])
+          {
+            a[i][j] = a[i-1][j];
+            s[i][j] = "u";
+          }
+          else
+          {
+            a[i][j] = a[i][j-1];
+            s[i][j] = "l";
+          }
+        }
+      }
+    }
+    for(int i = 0;i<=s1.length();i++)
+    {
+      for(int j = 0;j<=s2.length();j++)
+      {
+        System.out.print(a[i][j]+" ");
+      }
+      System.out.println();
+    }
+    System.out.println();
+    pLCS(s,s1,s1.length(),s2.length());
+    System.out.println();
+  }
+  public static void pLCS(String [][]st,String t1,int i,int j)
+  {
+    if(i==0 || j==0)
+    {
+      return;
+    }
+    if(st[i][j].equals("d"))
+    {
+      pLCS(st,t1,i-1,j-1);
+      System.out.print(t1.charAt(i-1));
+    }
+    else if(st[i][j].equals("u"))
+    {
+      pLCS(st,t1,i-1,j);
+    }
+    else
+    {
+      pLCS(st,t1,i,j-1);
+    }
+  }
+}

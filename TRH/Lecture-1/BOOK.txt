@@ -1,0 +1,6 @@
+BOOKS:
+1. Introduction to Algoritms (Second/Latest Edition)
+   Author--THOMAS H.CORMEN, CHARLES E. LEISERSON, RONALD L. RIVEST, CLIFFORD STEIN
+
+2. Fundamental of Computer Algoritms (Latest Edition)
+   Author--ELLIS HOROWITZ, SARTAJ SAHNI, SANGUTHEVAR RAJASESKARAN

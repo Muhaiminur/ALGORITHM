@@ -1,0 +1,78 @@
+public class Lcs_length
+{
+ public int LCS_LENGTH(String x,String y)
+{
+ArrayList<String> x = new ArrayList<String>();
+ArrayList<String> y = new ArrayList<String>();
+x.add(x);
+y.add(y);
+int m = x.length();
+int n = y.length();
+int b[][]= new int [m][n];
+int c[][]= new int [m][n];
+for(inti=1; i<m;i++)
+{
+  c[i][0]=0;
+}
+for(intj=0; j<n;j++)
+{
+  b[0][j]=0;
+}
+for(inti=1; i<m;i++)
+{
+ for(intj=1; j<n;j++)
+{
+ if(x[i]==y[j])
+ {
+   c[i][j]=c[i-1][j-1]+1;
+   b[i][j]=3;
+}
+ else 
+ { 
+   if(c[i-1][j]>= c[i][j-1])
+   {
+   c[i][j]=c[i-1][j];
+   b[i][j]=1;
+   }
+   else
+   {
+     c[i][j]=c[i][j-1];
+     b[i][j]=2;
+   }
+ }
+ }
+}
+return new Lcs_length(c, b);
+}
+public void PRINT_LCS(int [][]b,String x, int i,int j )
+{
+  if(i==0)
+  {
+    return;
+  }
+  else
+  {
+    if(j==0)
+  {
+    return;
+  }
+  }
+  if(b[i][j]==3)
+  {
+    PRINT_LCS(b,X,i-1, j-1);
+    System.out.print(x[i]);
+   }
+  else
+  {
+    if(b[i][j]==1)
+    {
+       PRINT_LCS(b,X,i-1, j);
+    }
+   else
+   {
+      PRINT_LCS(b,X,i, j-1);
+   }
+  }
+}
+}
+      
